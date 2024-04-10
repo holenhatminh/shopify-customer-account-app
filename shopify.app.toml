@@ -1,0 +1,29 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "08ee6494cea16d8ff41b4386ed84d627"
+name = "customer-account"
+handle = "customer-account-9"
+application_url = "https://amazon-restored-web-devel.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "test-customer-account-store.myshopify.com"
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://amazon-restored-web-devel.trycloudflare.com/auth/callback",
+  "https://amazon-restored-web-devel.trycloudflare.com/auth/shopify/callback",
+  "https://amazon-restored-web-devel.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-04"
+
+[pos]
+embedded = false
