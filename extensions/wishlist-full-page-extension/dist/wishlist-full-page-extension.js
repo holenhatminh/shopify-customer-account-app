@@ -1119,7 +1119,7 @@
             }
             return dispatcher;
           }
-          function useContext2(Context) {
+          function useContext3(Context) {
             var dispatcher = resolveDispatcher();
             {
               if (Context._context !== void 0) {
@@ -1133,7 +1133,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState(initialState) {
+          function useState2(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1145,7 +1145,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect(create, deps) {
+          function useEffect2(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1924,10 +1924,10 @@
           exports.startTransition = startTransition;
           exports.unstable_act = act;
           exports.useCallback = useCallback;
-          exports.useContext = useContext2;
+          exports.useContext = useContext3;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect;
+          exports.useEffect = useEffect2;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
@@ -1935,7 +1935,7 @@
           exports.useMemo = useMemo2;
           exports.useReducer = useReducer;
           exports.useRef = useRef2;
-          exports.useState = useState;
+          exports.useState = useState2;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -2495,7 +2495,7 @@
           var HostPortal = 4;
           var HostComponent = 5;
           var HostText = 6;
-          var Fragment = 7;
+          var Fragment2 = 7;
           var Mode = 8;
           var ContextConsumer = 9;
           var ContextProvider = 10;
@@ -2635,7 +2635,7 @@
                 return "DehydratedFragment";
               case ForwardRef:
                 return getWrappedName$1(type, type.render, "ForwardRef");
-              case Fragment:
+              case Fragment2:
                 return "Fragment";
               case HostComponent:
                 return type;
@@ -7053,7 +7053,7 @@
               }
             }
             function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-              if (current2 === null || current2.tag !== Fragment) {
+              if (current2 === null || current2.tag !== Fragment2) {
                 var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
                 created.return = returnFiber;
                 return created;
@@ -7456,7 +7456,7 @@
                 if (child.key === key) {
                   var elementType = element.type;
                   if (elementType === REACT_FRAGMENT_TYPE) {
-                    if (child.tag === Fragment) {
+                    if (child.tag === Fragment2) {
                       deleteRemainingChildren(returnFiber, child.sibling);
                       var existing = useFiber(child, element.props.children);
                       existing.return = returnFiber;
@@ -11633,7 +11633,7 @@
                 var _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
                 return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
               }
-              case Fragment:
+              case Fragment2:
                 return updateFragment(current2, workInProgress2, renderLanes2);
               case Mode:
                 return updateMode(current2, workInProgress2, renderLanes2);
@@ -12074,7 +12074,7 @@
               case SimpleMemoComponent:
               case FunctionComponent:
               case ForwardRef:
-              case Fragment:
+              case Fragment2:
               case Mode:
               case Profiler:
               case ContextConsumer:
@@ -16840,7 +16840,7 @@
             return fiber;
           }
           function createFiberFromFragment(elements, mode, lanes, key) {
-            var fiber = createFiber(Fragment, elements, key, mode);
+            var fiber = createFiber(Fragment2, elements, key, mode);
             fiber.lanes = lanes;
             return fiber;
           }
@@ -18423,6 +18423,9 @@
     }
   });
 
+  // extensions/wishlist-full-page-extension/src/Wishlist.tsx
+  var import_react18 = __toESM(require_react());
+
   // node_modules/@remote-ui/rpc/build/esm/memory.mjs
   function isBasicObject(value) {
     if (value == null || typeof value !== "object")
@@ -19121,17 +19124,32 @@
   // node_modules/@shopify/ui-extensions/build/esm/surfaces/customer-account/extension.mjs
   var extension = createExtensionRegistrationFunction();
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/customer-account/components/Card/Card.mjs
-  var Card = createRemoteComponent("Card");
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/customer-account/components/Page/Page.mjs
+  var Page = createRemoteComponent("Page");
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/InlineStack/InlineStack.mjs
-  var InlineStack = createRemoteComponent("InlineStack");
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/customer-account/components/ResourceItem/ResourceItem.mjs
+  var ResourceItem = createRemoteComponent("ResourceItem");
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Link/Link.mjs
-  var Link = createRemoteComponent("Link");
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
+  var BlockStack = createRemoteComponent("BlockStack");
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Text/Text.mjs
-  var Text = createRemoteComponent("Text");
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Button/Button.mjs
+  var Button = createRemoteComponent("Button");
+
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Grid/Grid.mjs
+  var Grid = createRemoteComponent("Grid");
+
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Image/Image.mjs
+  var Image = createRemoteComponent("Image");
+
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/SkeletonImage/SkeletonImage.mjs
+  var SkeletonImage = createRemoteComponent("SkeletonImage");
+
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/SkeletonText/SkeletonText.mjs
+  var SkeletonText = createRemoteComponent("SkeletonText");
+
+  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/TextBlock/TextBlock.mjs
+  var TextBlock = createRemoteComponent("TextBlock");
 
   // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/customer-account/render.mjs
   var import_react6 = __toESM(require_react(), 1);
@@ -19461,28 +19479,173 @@ ${errorInfo.componentStack}`);
     }
   };
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/customer-account/components/Card/Card.mjs
-  var Card2 = createRemoteReactComponent(Card);
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/customer-account/components/Page/Page.mjs
+  var Page2 = createRemoteReactComponent(Page, {
+    fragmentProps: ["primaryAction", "secondaryAction"]
+  });
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/InlineStack/InlineStack.mjs
-  var InlineStack2 = createRemoteReactComponent(InlineStack);
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/customer-account/components/ResourceItem/ResourceItem.mjs
+  var ResourceItem2 = createRemoteReactComponent(ResourceItem, {
+    fragmentProps: ["action"]
+  });
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Link/Link.mjs
-  var Link2 = createRemoteReactComponent(Link, {
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
+  var BlockStack2 = createRemoteReactComponent(BlockStack);
+
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Button/Button.mjs
+  var Button2 = createRemoteReactComponent(Button, {
     fragmentProps: ["overlay"]
   });
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Text/Text.mjs
-  var Text2 = createRemoteReactComponent(Text);
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Grid/Grid.mjs
+  var Grid2 = createRemoteReactComponent(Grid);
 
-  // extensions/customer-account-profile/src/ProfileBlockExtension.tsx
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Image/Image.mjs
+  var Image2 = createRemoteReactComponent(Image);
+
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/SkeletonImage/SkeletonImage.mjs
+  var SkeletonImage2 = createRemoteReactComponent(SkeletonImage);
+
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/SkeletonText/SkeletonText.mjs
+  var SkeletonText2 = createRemoteReactComponent(SkeletonText);
+
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/TextBlock/TextBlock.mjs
+  var TextBlock2 = createRemoteReactComponent(TextBlock);
+
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/customer-account/hooks/api.mjs
+  var import_react17 = __toESM(require_react(), 1);
+
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/customer-account/errors.mjs
+  var CustomerAccountUIExtensionError = class extends Error {
+    constructor(...args) {
+      super(...args);
+      this.name = "CustomerAccountUIExtensionError";
+    }
+  };
+
+  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/customer-account/hooks/api.mjs
+  function useApi() {
+    const api = (0, import_react17.useContext)(ExtensionApiContext);
+    if (api == null) {
+      throw new CustomerAccountUIExtensionError("You can only call this hook when running as a UI extension.");
+    }
+    return api;
+  }
+
+  // extensions/wishlist-full-page-extension/src/Wishlist.tsx
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
-  var ProfileBlockExtension_default = reactExtension("customer-account.profile.block.render", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockExtension, {}));
-  function BlockExtension() {
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Card2, { padding: true, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineStack2, { inlineAlignment: "center", spacing: "tight", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: "Grow your garden with more plants from your wishlist." }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Link2, { to: "extension:wishlist-full-page-extension/", children: "View wishlist" })
+  var Wishlist_default = reactExtension("customer-account.page.render", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Wishlist, {}));
+  function Wishlist() {
+    const { i18n, query } = useApi();
+    const [wishlist, setWishlist] = (0, import_react18.useState)([]);
+    const [loading, setLoading] = (0, import_react18.useState)(false);
+    const [removeLoading, setRemoveLoading] = (0, import_react18.useState)({
+      id: null,
+      loading: false
+    });
+    function fetchWishlist() {
+      return __async(this, null, function* () {
+        var _a, _b;
+        setLoading(true);
+        try {
+          const data = yield query(
+            `query ($first: Int!) {
+          products(first: $first) {
+            nodes {
+              id
+              title
+              onlineStoreUrl
+              priceRange {
+                minVariantPrice {
+                  amount
+                  currencyCode
+                }
+                maxVariantPrice {
+                  amount
+                  currencyCode
+                }
+              }
+              featuredImage {
+                url
+              }
+            }
+          }
+        }`,
+            {
+              variables: { first: 20 }
+            }
+          );
+          setLoading(false);
+          setWishlist(((_b = (_a = data.data) == null ? void 0 : _a.products) == null ? void 0 : _b.nodes) || []);
+        } catch (error) {
+          setLoading(false);
+          console.log(error);
+        }
+      });
+    }
+    function deleteWishlistItem(id) {
+      return __async(this, null, function* () {
+        setRemoveLoading({ loading: true, id });
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            setWishlist(wishlist.filter((item) => item.id !== id));
+            setRemoveLoading({ loading: false, id: null });
+            resolve();
+          }, 750);
+        });
+      });
+    }
+    (0, import_react18.useEffect)(() => {
+      fetchWishlist();
+    }, []);
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Page2, { title: "Wishlist", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Grid2, { columns: ["fill", "fill", "fill"], rows: "auto", spacing: "loose", children: [
+      loading && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ResourceItem2, { loading: true, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "base", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+          SkeletonImage2,
+          {
+            inlineSize: "fill",
+            aspectRatio: 1,
+            blockSize: "fill"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(SkeletonText2, { inlineSize: "base" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(SkeletonText2, { inlineSize: "small" })
+      ] }) }),
+      !loading && wishlist.length > 0 && wishlist.map((product) => {
+        return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+          ResourceItem2,
+          {
+            loading,
+            action: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Button2, { kind: "primary", to: product.onlineStoreUrl, children: "View product" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                Button2,
+                {
+                  kind: "secondary",
+                  loading: removeLoading.loading && product.id === removeLoading.id,
+                  onPress: () => {
+                    deleteWishlistItem(product.id);
+                  },
+                  children: "Remove"
+                }
+              )
+            ] }),
+            children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "base", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Image2, { source: product.featuredImage.url }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(TextBlock2, { emphasis: "bold", children: product.title }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(TextBlock2, { appearance: "subdued", children: i18n.formatCurrency(
+                product.priceRange.minVariantPrice.amount,
+                {
+                  currency: product.priceRange.minVariantPrice.currencyCode
+                }
+              ) })
+            ] })
+          },
+          product.id
+        );
+      }),
+      !loading && wishlist.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(TextBlock2, { children: "No items in your wishlist." })
     ] }) });
   }
 })();
-//# sourceMappingURL=customer-account-profile.js.map
+//# sourceMappingURL=wishlist-full-page-extension.js.map

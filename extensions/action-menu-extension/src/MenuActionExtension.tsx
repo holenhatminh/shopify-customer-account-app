@@ -1,4 +1,3 @@
-// import { useEffect, useState } from "react";
 import {
   Button,
   reactExtension,
@@ -27,6 +26,7 @@ export default reactExtension(
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            // "X-Shopify-Access-Token": "789a3ab68ae27b5ce6bf79e8402e4762",
           },
           body: JSON.stringify(orderQuery),
         },
