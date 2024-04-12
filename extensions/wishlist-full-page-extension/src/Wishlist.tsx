@@ -20,6 +20,7 @@ interface Product {
   id: string;
   title: string;
   onlineStoreUrl: string;
+  handle: string;
   featuredImage: {
     url: string;
   };
@@ -38,6 +39,7 @@ interface Product {
 function Wishlist() {
   const { i18n, query } = useApi<"customer-account.page.render">();
   const [wishlist, setWishlist] = useState<Product[]>([]);
+  const [shopName, setShopName] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [removeLoading, setRemoveLoading] = useState({
     id: null,
@@ -50,13 +52,20 @@ function Wishlist() {
     try {
       // Implement a server request to retrieve the wishlist for this customer
       // Then call the Storefront API to retrieve the details of the wishlisted products
-      const data = await query<{ products: { nodes: Product[] } }>(
+      const data = await query<{
+        products: { nodes: Product[] };
+        shop: { name: string };
+      }>(
         `query ($first: Int!) {
+          shop {
+            name
+          }
           products(first: $first) {
             nodes {
               id
               title
               onlineStoreUrl
+              handle
               priceRange {
                 minVariantPrice {
                   amount
@@ -78,6 +87,7 @@ function Wishlist() {
         },
       );
       setLoading(false);
+      setShopName(data.data?.shop.name);
       setWishlist(data.data?.products?.nodes || []);
     } catch (error) {
       setLoading(false);
@@ -130,7 +140,10 @@ function Wishlist() {
                 key={product.id}
                 action={
                   <>
-                    <Button kind="primary" to={product.onlineStoreUrl}>
+                    <Button
+                      kind="primary"
+                      to={`https://${shopName}.myshopify.com/products/${product.handle}`}
+                    >
                       View product
                     </Button>
                     <Button
