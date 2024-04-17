@@ -1119,7 +1119,7 @@
             }
             return dispatcher;
           }
-          function useContext3(Context) {
+          function useContext2(Context) {
             var dispatcher = resolveDispatcher();
             {
               if (Context._context !== void 0) {
@@ -1133,7 +1133,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState2(initialState) {
+          function useState(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1924,7 +1924,7 @@
           exports.startTransition = startTransition;
           exports.unstable_act = act;
           exports.useCallback = useCallback;
-          exports.useContext = useContext3;
+          exports.useContext = useContext2;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
           exports.useEffect = useEffect;
@@ -1935,7 +1935,7 @@
           exports.useMemo = useMemo2;
           exports.useReducer = useReducer;
           exports.useRef = useRef2;
-          exports.useState = useState2;
+          exports.useState = useState;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -18401,10 +18401,10 @@
               return jsxWithValidation(type, props, key, false);
             }
           }
-          var jsx6 = jsxWithValidationDynamic;
+          var jsx5 = jsxWithValidationDynamic;
           var jsxs = jsxWithValidationStatic;
           exports.Fragment = REACT_FRAGMENT_TYPE;
-          exports.jsx = jsx6;
+          exports.jsx = jsx5;
           exports.jsxs = jsxs;
         })();
       }
@@ -19121,17 +19121,8 @@
   // node_modules/@shopify/ui-extensions/build/esm/surfaces/customer-account/extension.mjs
   var extension = createExtensionRegistrationFunction();
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/customer-account/components/CustomerAccountAction/CustomerAccountAction.mjs
-  var CustomerAccountAction = createRemoteComponent("CustomerAccountAction");
-
   // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Button/Button.mjs
   var Button = createRemoteComponent("Button");
-
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Form/Form.mjs
-  var Form = createRemoteComponent("Form");
-
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Select/Select.mjs
-  var Select = createRemoteComponent("Select");
 
   // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/customer-account/render.mjs
   var import_react6 = __toESM(require_react(), 1);
@@ -19461,41 +19452,10 @@ ${errorInfo.componentStack}`);
     }
   };
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/customer-account/components/CustomerAccountAction/CustomerAccountAction.mjs
-  var CustomerAccountAction2 = createRemoteReactComponent(CustomerAccountAction, {
-    fragmentProps: ["primaryAction", "secondaryAction"]
-  });
-
   // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Button/Button.mjs
   var Button2 = createRemoteReactComponent(Button, {
     fragmentProps: ["overlay"]
   });
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Form/Form.mjs
-  var Form2 = createRemoteReactComponent(Form);
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Select/Select.mjs
-  var Select2 = createRemoteReactComponent(Select);
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/customer-account/hooks/api.mjs
-  var import_react12 = __toESM(require_react(), 1);
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/customer-account/errors.mjs
-  var CustomerAccountUIExtensionError = class extends Error {
-    constructor(...args) {
-      super(...args);
-      this.name = "CustomerAccountUIExtensionError";
-    }
-  };
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/customer-account/hooks/api.mjs
-  function useApi() {
-    const api = (0, import_react12.useContext)(ExtensionApiContext);
-    if (api == null) {
-      throw new CustomerAccountUIExtensionError("You can only call this hook when running as a UI extension.");
-    }
-    return api;
-  }
 
   // extensions/action-menu-extension/src/MenuActionExtension.tsx
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
@@ -19528,82 +19488,24 @@ ${errorInfo.componentStack}`);
           }
         );
         const { data } = yield result.json();
+        console.log(data);
         hasFulfillments = data.order.fulfillments.nodes.length !== 0;
       } catch (error) {
         console.log(error);
         hasFulfillments = false;
       }
-      return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(MenuActionExtension, { showAction: hasFulfillments });
+      return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(MenuActionExtension, { showAction: hasFulfillments, orderId });
     })
   );
-  function MenuActionExtension({ showAction }) {
+  function MenuActionExtension({
+    showAction,
+    orderId
+  }) {
     if (!showAction) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Button2, { children: "Report a problem" });
-  }
-
-  // extensions/action-menu-extension/src/MenuActionModalExtension.tsx
-  var import_react13 = __toESM(require_react());
-  var import_jsx_runtime5 = __toESM(require_jsx_runtime());
-  var MenuActionModalExtension_default = reactExtension(
-    "customer-account.order.action.render",
-    () => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(MenuActionModalExtension, {})
-  );
-  var dtcOptions = [
-    { value: "1", label: "Package item is damaged" },
-    { value: "2", label: "Missing items" },
-    { value: "3", label: "Wrong item was sent" },
-    { value: "4", label: "Item arrived too late" },
-    { value: "5", label: "Never received item" }
-  ];
-  var b2bOptions = dtcOptions.concat([
-    { value: "6", label: "Package sent to the wrong company location" }
-  ]);
-  function MenuActionModalExtension() {
-    const { close, authenticatedAccount } = useApi();
-    const [currentProblem, setCurrentProblem] = (0, import_react13.useState)("1");
-    const [isLoading, setIsLoading] = (0, import_react13.useState)(false);
-    const isB2BCustomer = authenticatedAccount.purchasingCompany.current != null;
-    function onSubmit() {
-      setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(false);
-        close();
-      }, 750);
-    }
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-      CustomerAccountAction2,
-      {
-        title: "Report a problem",
-        primaryAction: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-          Button2,
-          {
-            loading: isLoading,
-            onPress: () => onSubmit(),
-            children: "Report"
-          }
-        ),
-        secondaryAction: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-          Button2,
-          {
-            onPress: () => {
-              close();
-            },
-            children: "Cancel"
-          }
-        ),
-        children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Form2, { onSubmit: () => onSubmit(), children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-          Select2,
-          {
-            label: "Select a problem",
-            options: isB2BCustomer ? b2bOptions : dtcOptions,
-            value: currentProblem,
-            onChange: (value) => setCurrentProblem(value)
-          }
-        ) })
-      }
-    );
+    console.log(orderId);
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Button2, { to: `extension:return-page/?orderId=${orderId.split("/").pop()}`, children: "Request return" });
   }
 })();
 //# sourceMappingURL=action-menu-extension.js.map

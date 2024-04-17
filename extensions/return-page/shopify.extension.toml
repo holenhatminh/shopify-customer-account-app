@@ -7,16 +7,16 @@ api_version = "unstable"
 
 [[extensions]]
 type = "ui_extension"
-name = "action-menu-extension"
-handle = "action-menu-extension"
+name = "return-page"
+handle = "return-page"
 
 # Controls where in Shopify your extension will be injected,
 # and the file that contains your extension’s source code. Learn more:
 # https://shopify.dev/docs/api/customer-account-ui-extensions/unstable/extension-targets-overview
 
 [[extensions.targeting]]
-module = "./src/MenuActionExtension.tsx"
-target = "customer-account.order.action.menu-item.render"
+module = "./src/ReturnPage.tsx"
+target = "customer-account.page.render"
 
 [extensions.capabilities]
 # Gives your extension access to directly query Shopify’s storefront API.

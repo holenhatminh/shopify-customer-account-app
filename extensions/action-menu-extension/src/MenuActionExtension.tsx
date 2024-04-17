@@ -32,19 +32,32 @@ export default reactExtension(
         },
       );
       const { data } = await result.json();
+      console.log(data);
       hasFulfillments = data.order.fulfillments.nodes.length !== 0;
     } catch (error) {
       console.log(error);
       hasFulfillments = false;
     }
-    return <MenuActionExtension showAction={hasFulfillments} />;
+    return (
+      <MenuActionExtension showAction={hasFulfillments} orderId={orderId} />
+    );
   },
 );
 
-function MenuActionExtension({ showAction }: { showAction: boolean }) {
+function MenuActionExtension({
+  showAction,
+  orderId,
+}: {
+  showAction: boolean;
+  orderId: string;
+}) {
   if (!showAction) {
     return null;
   }
-
-  return <Button>Report a problem</Button>;
+  console.log(orderId);
+  return (
+    <Button to={`extension:return-page/?orderId=${orderId.split("/").pop()}`}>
+      Request return
+    </Button>
+  );
 }

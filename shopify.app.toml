@@ -3,7 +3,7 @@
 client_id = "08ee6494cea16d8ff41b4386ed84d627"
 name = "customer-account"
 handle = "customer-account-9"
-application_url = "https://lexmark-pharmaceutical-enemies-adventure.trycloudflare.com"
+application_url = "https://info-temperatures-mask-hills.trycloudflare.com"
 embedded = true
 
 [build]
@@ -13,13 +13,13 @@ include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "unauthenticated_read_product_inventory,write_products"
+scopes = "unauthenticated_read_customers,unauthenticated_read_product_inventory,write_products"
 
 [auth]
 redirect_urls = [
-  "https://lexmark-pharmaceutical-enemies-adventure.trycloudflare.com/auth/callback",
-  "https://lexmark-pharmaceutical-enemies-adventure.trycloudflare.com/auth/shopify/callback",
-  "https://lexmark-pharmaceutical-enemies-adventure.trycloudflare.com/api/auth/callback"
+  "https://info-temperatures-mask-hills.trycloudflare.com/auth/callback",
+  "https://info-temperatures-mask-hills.trycloudflare.com/auth/shopify/callback",
+  "https://info-temperatures-mask-hills.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

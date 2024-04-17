@@ -1,0 +1,16 @@
+{
+  "name": "return-page",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@shopify/react-router": "^3.0.8",
+    "@shopify/ui-extensions": "unstable",
+    "@shopify/ui-extensions-react": "unstable",
+    "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "react-reconciler": "0.29.0"
+  }
+}
